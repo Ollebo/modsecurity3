@@ -1,0 +1,21 @@
+version: '3'
+services:
+#  nginx:
+#    build: .
+#    volumes:
+#    - ./nginx.conf:/etc/nginx/nginx.conf
+#    - ./modsec_rules.conf:/etc/modsecurity.d/rules.conf
+#    - ./default:/etc/nginx/sites-enabled/default
+#    - ./rules:/etc/nginx/modsec/
+#
+#    ports:
+#      - 8080:80
+  nginx:
+    build: .
+    image: owasp/modsecurity
+    volumes:
+    - ./modsec_rules.conf:/etc/modsecurity.d/rules.conf
+    - ./rules/modsecurity.conf:/etc/modsecurity.d/include.conf
+
+    ports:
+      - 8080:80
